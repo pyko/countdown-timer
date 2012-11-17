@@ -1,0 +1,21 @@
+body {
+	font-family: helvetica, arial;
+	font-size: 14px;
+	color: #333;
+	background: url("escheresque.png"); /* http://subtlepatterns.com/escheresque/ */
+	text-align: center;
+	overflow: hidden;
+}
+
+h1 {
+	font-size: 100px;
+	margin: 20px 0;
+}
+
+.photo img {
+	border: 1px solid #666;
+	padding: 10px;
+	background: #fff;
+	box-shadow: 1px 1px 3px 3px #ccc;
+	max-height: 455px;
+}

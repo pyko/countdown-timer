@@ -2,14 +2,14 @@ var SimpleCountdown = {
 
 	// element: the DOM element where the timer will appear
 	// duration: total countdown duration in seconds
-	// largeInterval: the initial intervals to jump by (in seconds)
-	// finalCountdown: when to start counting down every second
-	startTimer: function(element, duration, largeInterval, finalCountdown){
+	// interval: the initial intervals to jump by (in seconds)
+	// finalLimit: when to start counting down every second
+	startTimer: function(element, duration, interval, finalLimit){
 		var that = this,
-			timeoutDelay = largeInterval * 1000; // convert to milliseconds
+			timeoutDelay = interval * 1000; // convert to milliseconds
 		this.updateTimer(element, duration);
 
-		var reduceTime = function(duration, interval, finalCountdown) {
+		var reduceTime = function(duration, interval, finalLimit) {
 			var newDuration = duration - interval;
 			that.updateTimer(element, newDuration);
 
@@ -17,19 +17,19 @@ var SimpleCountdown = {
 				return;
 			}
 
-			if ( (newDuration > finalCountdown) && (newDuration-interval) < finalCountdown) {
-				// Taking the entire 'interval' jump will cause us to be less than finalCountdown
-				// so adjust this interval so we will reach 'finalCountdown'
-				interval = newDuration - finalCountdown;								
-			} else if (newDuration === finalCountdown) {
-				// Reached finalCountdown, start counting down every second
+			if ( (newDuration > finalLimit) && (newDuration-interval) < finalLimit) {
+				// Taking the entire 'interval' jump will cause us to be less than finalLimit
+				// so adjust this interval so we will reach 'finalLimit'
+				interval = newDuration - finalLimit;								
+			} else if (newDuration === finalLimit) {
+				// Reached finalLimit, start counting down every second
 				interval = 1;
 			}
 			timeoutDelay = interval * 1000;
-			setTimeout(reduceTime, timeoutDelay, newDuration, interval, finalCountdown);
+			setTimeout(reduceTime, timeoutDelay, newDuration, interval, finalLimit);
 		};
 
-		setTimeout(reduceTime, timeoutDelay, duration, largeInterval, finalCountdown);
+		setTimeout(reduceTime, timeoutDelay, duration, interval, finalLimit);
 	},
 
 	updateTimer: function(element, duration){

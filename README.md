@@ -7,7 +7,9 @@ This timer allows you to specify the total duration, the interval to use for dec
 
 Usage
 -----
-`SimpleCountdown.startTimer(element, duration, interval, finalLimit);`
+```
+SimpleCountdown.startTimer(element, duration, interval, finalLimit);
+```
 
 * **element** - the DOM element you want the timer to appear in
 * **duration** - the total time (in seconds) for the countdown

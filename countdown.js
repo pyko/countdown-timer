@@ -5,7 +5,6 @@ var SimpleCountdown = {
 	// largeInterval: the initial intervals to jump by (in seconds)
 	// finalCountdown: when to start counting down every second
 	startTimer: function(element, duration, largeInterval, finalCountdown){
-		console.log("Timer started: " + duration + " seconds, " + largeInterval + " second intervals until " + finalCountdown + " seconds");
 		var that = this,
 			timeoutDelay = largeInterval * 1000; // convert to milliseconds
 		this.updateTimer(element, duration);
@@ -21,8 +20,7 @@ var SimpleCountdown = {
 			if ( (newDuration > finalCountdown) && (newDuration-interval) < finalCountdown) {
 				// Taking the entire 'interval' jump will cause us to be less than finalCountdown
 				// so adjust this interval so we will reach 'finalCountdown'
-				interval = newDuration - finalCountdown;				
-				console.log("Transition interval: " + interval);
+				interval = newDuration - finalCountdown;								
 			} else if (newDuration === finalCountdown) {
 				// Reached finalCountdown, start counting down every second
 				interval = 1;
@@ -40,8 +38,6 @@ var SimpleCountdown = {
 			prettyTime = this.formatTime(durationInMinutes, remainingSeconds);
 
 		element.innerText = prettyTime;
-		// element.text(prettyTime); // can use this if you're using jQuery
-		console.log("Timer currently at: " + prettyTime);
 	},
 
 	formatTime: function(minutes, seconds){
